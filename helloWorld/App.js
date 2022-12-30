@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native'; // inserindo as tags que 
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.container__title}>Hello World!!</Text>
+    <View style={styles.container}> {/* view é igual a div */}
+      <Text style={styles.container__title}>Hello World!!</Text> {/* text usado para texto */}
       <Text>Criado por DS Pelizario</Text>
       <StatusBar style="auto" />
     </View>
