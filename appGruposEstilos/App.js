@@ -14,10 +14,16 @@ class App extends Component {  // maneira diferente de criar component diferente
           <Text style={styles.textoTerciario}>Eu sou texto 3</Text>
           <Text style={styles.textoQuartenario}>Eu sou texto 4</Text>
         </View>
-        <View style={{flex: 1, backgroundColor: '#222', paddingTop: 100, paddingBottom: 100}}>
-          <View style={{flex: 1, backgroundColor: '#FF0000'}}></View>
-          <View style={{flex: 2, backgroundColor: 'green'}}></View>
-          <View style={{flex: 3, backgroundColor: 'yellow'}}></View>
+        <View style={{flex: 1, 
+                      backgroundColor: '#222', 
+                      flexDirection: 'row', 
+                      justifyContent: 'center', 
+                      alignItems: 'center'
+                    }}>
+          <View style={{width: 50,height: 50,  backgroundColor: '#FF0000'}}></View>
+          <View style={{width: 50,height: 50,  backgroundColor: 'green'}}></View>
+          <View style={{width: 50,height: 50,  backgroundColor: 'yellow'}}></View>
+          <View style={{width: 50,height: 50,  backgroundColor: 'blue'}}></View>
         </View>
       </View>
       
