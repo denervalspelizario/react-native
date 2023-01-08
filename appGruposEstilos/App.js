@@ -6,13 +6,21 @@ class App extends Component {  // maneira diferente de criar component diferente
   render(){
     return(
       // estilizacao
-      <View style={styles.area}>   
-        {/*  */}
-        <Text style={[styles.textoPrincipal, styles.textoComBorda]}>Eu sou texto 1</Text> 
-        <Text style={styles.textoSecundario}>Eu sou texto 2</Text>
-        <Text style={styles.textoTerciario}>Eu sou texto 3</Text>
-        <Text style={styles.textoQuartenario}>Eu sou texto 4</Text>
+      <View style={{flex: 1, backgroundColor: '#ccc'}}>
+        <View style={styles.area}>   
+          {/* Aplicando duas classes juntas ao elemento */} 
+          <Text style={[styles.textoPrincipal, styles.textoComBorda]}>Eu sou texto 1</Text> 
+          <Text style={styles.textoSecundario}>Eu sou texto 2</Text>
+          <Text style={styles.textoTerciario}>Eu sou texto 3</Text>
+          <Text style={styles.textoQuartenario}>Eu sou texto 4</Text>
+        </View>
+        <View style={{flex: 1, backgroundColor: '#222', paddingTop: 100, paddingBottom: 100}}>
+          <View style={{flex: 1, backgroundColor: '#FF0000'}}></View>
+          <View style={{flex: 2, backgroundColor: 'green'}}></View>
+          <View style={{flex: 3, backgroundColor: 'yellow'}}></View>
+        </View>
       </View>
+      
     )
   }
 }
@@ -25,7 +33,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    flex: 1
     
   }, 
   textoComBorda: {
