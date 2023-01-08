@@ -30,7 +30,7 @@ class Jobs extends Component {
     
 
     return(
-      <View>
+      <View> 
         <Image  
           source={{uri: img }}
           style={{width: this.props.largura, height: this.props.altura}} // estilizando via props
@@ -43,3 +43,4 @@ class Jobs extends Component {
     )
   }
 }
+
