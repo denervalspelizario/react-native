@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';  // 1 input 
+import { View, Text, StyleSheet, TextInput, Button } from 'react-native';  // 1 input  2 inportando o botao 
 
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {  // 1 state usado no texto que neste caso começa com Desenvovledor mas pode ser vazio ou qualquer nome
                     //1  para depois mudar de estado com o pegaNome
-      nome: 'Desenvolvedor'
+      nome: 'Desenvolvedor',
+      input: ''
     };
-
-    this.pegaNome = this.pegaNome.bind(this);  // 1 atravez deste bind ele linka a funcao pega nome ao state nome la no text
+    this.entrar = this.entrar.bind(this);  // 2 atravez deste bind ele linka a funcao entrar é acionada ao clicar
   }
 
-  pegaNome(texto){  // 1  funcao  que usa parametro texto e SE texto digitado > que 0 ele altera o state por setState que no caso aqui recebe o parametro texto
-                    // 1  que é o texto digitado... se nada digitado ele continua como vazio   
-    if(texto.length > 0){
-      this.setState({nome: texto});
-    }else{
-      this.setState({nome: 'Desenvolvedor'})
+  entrar(){
+    if(this.state.input === ''){
+      alert('Digite seu nome')
+    }else {
+      this.setState({nome: this.state.input}) // 2 o setState recebe o state do input
     }
+   
+
   }
+
 
   render(){
     return(
@@ -29,11 +31,15 @@ class App extends Component{
         style={styles.input}
         placeholder="Digite seu nome?" 
         underlineColorAndroid="transparent"  // 1 retira o inderline padrao do texto digitado
-        onChangeText={this.pegaNome}  // 1 onChange  pega o item no caso o pegaNome ao digitar ou sej a  a acao e feita ao DIGITAR
+        onChangeText={(texto) => this.setState({input: texto})} // 1 onChangeText pega o texto digitado no input 
+                                                                // 2 com essa funcao ao digitar o state que é "Desenvovledor" 
+                                                                // 2 que muda para setState que é o texto recebido pelo parametro texto 
         />
         {/* 1 O text que é inserido é o state Nome que é dinamico */}
         <Text style={styles.texto}>Bem vindo {this.state.nome}</Text> 
-
+        {/* 2 - criando um botão  com nome de entrar e o onPress tem a mesma funcao do onClick no react */}
+        {/* 2 - entrar funcao que é chamada ao pressionar */}
+        <Button title='Entrar' onPress={this.entrar}/> 
       </View>
     );
   }
