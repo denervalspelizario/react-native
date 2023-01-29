@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View,FlatList } from 'react-native';   // Flatlist componente preformatico para grande listas
+import Pessoas from './components/Pessoas';
 
 class App extends Component {
+  
   constructor(props){
     super(props);
     this.state = {
@@ -14,7 +16,6 @@ class App extends Component {
     };
   }
 
-
   render(){
   return (
     <View style={styles.container}>
@@ -26,7 +27,7 @@ class App extends Component {
         showsVerticalScrollIndicator={false}
         data={this.state.feed} // 1 data recebe o state feed que tem a array de listas
         keyExtractor={(item) => item.id} // 4 o keyExtractor é usado quando a lotsa não tem id e vc quer especificar qual seria a id
-        renderItem={({item}) =>  <Pessoa data={item}/> } // 2 o renderItem é oque mostra a lista   nele contem uma funcao  que o component Pessoa recebe o item   
+        renderItem={({item}) =>  <Pessoas data={item}/> } // 2 o renderItem é oque mostra a lista   nele contem uma funcao  que o component Pessoa recebe o item   
       
       />
       
@@ -44,20 +45,6 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
     
   },
-  areaPessoa: {
-    backgroundColor: '#1E90FF',
-    marginTop: 30,
-  },
-  textPessoa: {
-    fontSize: 15,
-    textAlign: 'center',
-    backgroundColor: '#00BFFF',
-    margin: 20,
-    fontStyle: 'Helvetica',
-    color: '#fff',
-    padding: 10
-  }
-  
   
 });
 
@@ -65,16 +52,3 @@ const styles = StyleSheet.create({
 export default App;
 
 
-class Pessoa extends Component {
-  render(){
-    return(
-      <View style={styles.areaPessoa}>
-        {/* 3 o texto recebe o props data.nome que esta recebendo o feed que é o state que contem uma array de lista que tem o elemento nome */}
-        <Text style={styles.textPessoa}>nome : {this.props.data.nome}</Text>
-        {/* 5 os textos recebem o props data.idade e data.email que estao recebendo o feed que é o state que contem uma array de lista que tem o elementos idade e email */}  
-        <Text style={styles.textPessoa}>idade : {this.props.data.idade}</Text>  
-        <Text style={styles.textPessoa}>email : {this.props.data.email}</Text>  
-      </View>
-    );
-  }
-}
