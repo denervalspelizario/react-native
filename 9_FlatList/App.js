@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View,FlatList } from 'react-native';   // Flatlist componente preformatico para grande listas
-import Pessoas from './components/Pessoas';
+import Pessoas from './components/Pessoas'; //
 
 class App extends Component {
   

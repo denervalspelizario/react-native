@@ -2,17 +2,6 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View,FlatList } from 'react-native';   // Flatlist componente preformatico para grande listas
 
 class Pessoa extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-          feed: [ // lista que funciona como array chamada feed
-            {id: 1, nome: 'Denerval', idade: 35, email: 'denervalspelizario@gmail.com'},
-            {id: 2, nome: 'Francisca', idade: 29, email: 'francisca@gmail.com'},
-            {id: 3, nome: 'Gabriela', idade: 11, email: 'gabriela@gmail.com'},
-            {id: 4, nome: 'Pedro', idade: 8, email: 'pedro@gmail.com'},
-          ]
-        };
-      }
 
     render(){
       return(
