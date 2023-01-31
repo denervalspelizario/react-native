@@ -29,8 +29,9 @@ class App extends Component {
 
   render(){
     // 4 criando uma variável que recebe o state pizza(array de objetos) comd dados das pizzas  
+                  // 4  com a funçao map vai percorrer em todas os objetos e retorna com itens abaixo                      
     let pizzasItem = this.state.pizzas.map((value, key) => {
-      return <Picker.Item  key={key}  value={key}   label={value.nome}/>
+      return <Picker.Item  key={key}  value={key}   label={value.nome}/> // key e value valores de referencia e label oque vai aparecer para o user
 
     })  
 
@@ -52,6 +53,8 @@ class App extends Component {
         <Picker.Item  key={4} value={4} label='2 Queijos' />
         <Picker.Item  key={5} value={5} label='Calabresa' />
        */} 
+       {/* 4 abaixo é adicionado a variável pizzasItem que como dito acima retorna o map de todos os objetos da array pizzas
+            e ja esta formatado na forma Picker.Item , olhar linha 33 e 34*/}
        {pizzasItem}
       </Picker>
                             {/*  4 - atravez de state pizza que fica dentro do state pizzas se acessa o nome e preço de forma dinamica */}              
