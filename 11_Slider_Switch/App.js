@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, } from 'react-native';  
+import { StyleSheet, Text, View, Switch} from 'react-native'; // 6 importando o Switch obs - não precisa instalar pois a biblioteca ja vem no react-native  
 import Slider from '@react-native-community/slider';   // 1 tem que importar o slider
 
 // 1 para usar o slider tem que se instalar a bibioteca comando no projeto EXPO  npx expo install @react-native-community/slider
 // 1  para projetos  npx react-native init o comando será npm install @react-native-community/slider --save
 // 1 acesse https://www.npmjs.com/package/@react-native-community/slider  para ver a documentação e dicas de estilos do slider
 
+// 6  acesse  https://reactnative.dev/docs/switch  para ver documentação do switch   
+
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      valor: 0
+    this.state = { 
+      valor: 0,  // state do slider
+      status: false,   // state do switch - se começar como true ele começa ativado
     }
   }
 
@@ -49,6 +52,21 @@ class App extends Component {
       <Text style={{textAlign: 'center', fontSize: 20, marginTop: 20}}>
       Voce tem  {this.state.valor.toFixed(0)} kg
       </Text>
+
+
+      <View style={styles.containerSwitch}>
+        <Switch 
+          value={this.state.status} // 6 
+          onValueChange={(valorSwicth) => this.setState({status: valorSwicth})}
+          thumbColor='#00FFFF' // 6 controla a cor da bolinha do switch
+        />
+        <Text style={styles.textSwitch}>
+          {/* 6 arow function com base na state status que quando estiver false (desligado o switch) aparece string 'esta desativado',
+                se estiver true (ligado o switch) aparece a string 'esta ativado' */}
+          {(this.state.status) ? 'esta ativado' : 'esta desativado'}
+        </Text>
+      </View>
+      
       
     </View>
   );
@@ -60,6 +78,16 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 25,
   },
+  containerSwitch: {
+    marginTop: 25,
+    borderTopWidth: 3,
+    borderTopColor: '#00ff00'
+  },
+  textSwitch: {
+    textAlign: 'center',
+    fontSize: 20,
+    
+  }
   
 });
 
