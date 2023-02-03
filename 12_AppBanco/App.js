@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity,Image} from 'react-native'; // importando  1 - input, 2 - TouchableOpacity que é um Botão transparent
+import { StyleSheet, Text, View, TextInput, TouchableOpacity,Image, Switch, ScrollView} from 'react-native'; // importando  1 - input, 2 - TouchableOpacity que é um Botão transparent,  5 Switch
 import { Picker } from '@react-native-picker/picker'; // 3 importanção do picker depois de instalado
 import Slider from '@react-native-community/slider';   // 4 importando o slider
 import BankImage from './assets/bank.png';
@@ -12,6 +12,11 @@ import BankImage from './assets/bank.png';
 // 4 para usar o slider tem que se instalar a bibioteca comando no projeto EXPO  npx expo install @react-native-community/slider
 // 4  para projetos  npx react-native init o comando será npm install @react-native-community/slider --save
 // 4 acesse https://www.npmjs.com/package/@react-native-community/slider  para ver a documentação e dicas de estilos do slider
+
+
+// 5  acesse  https://reactnative.dev/docs/switch  para ver documentação do switch   
+
+
 
 class App extends Component {
   constructor(props){
@@ -40,6 +45,7 @@ class App extends Component {
     } else if( this.state.sexo == 0) {
       alert('selecione o genero')
     } else {
+
       this.setState({nome : this.state.input}),
       this.setState({idade : this.state.input2})
     }
@@ -55,11 +61,15 @@ class App extends Component {
       })  
 
   return (
+    <ScrollView showsHorizontalScrollIndicator={true}>
     <View style={styles.container}>
+      
       <Image source={BankImage} style={styles.imgBank} />
       <Text style={styles.textBank}>Banco Pelizario</Text>
       <View style={styles.containerForm}>
         <Text style={styles.textForm}>Nome completo</Text>
+
+        {/* entradas de dados pelo Input */}
         <TextInput   //  1 - input ( entrada de dados ) 
           style={styles.input}  // estilizacao
           placeholder=' Digite seu nome completo' // adiciona uma string temporaria até digitar algum texto
@@ -81,6 +91,7 @@ class App extends Component {
           keyboardType='numeric' // na hora de digitar aparece somente o teclado numerico                                                      
         />
 
+        {/* uso do Picker */}
         <Text style={styles.textForm}>Com qual genero se indentifica?</Text>
         <Picker
         style={styles.stylePicker}
@@ -92,6 +103,8 @@ class App extends Component {
          {genero} 
         </Picker>  
 
+
+        {/* uso do Slider */}
         <Text style={styles.textForm}>Escolha sua faixa salarial</Text>
         <Slider 
         style={styles.styleSlider}
@@ -121,7 +134,15 @@ class App extends Component {
         Rendimento mensal R$ {this.state.valor.toFixed(2)} 
       </Text>
 
-
+      {/* uso do Switch */}
+      <Text style={styles.textForm}>Abrir conta Estudante?</Text>
+      <Switch
+        style={styles.switch}
+        value={this.state.status}
+        onValueChange={(valorSwicth) => this.setState({status: valorSwicth})}
+        thumbColor='#00FFFF' // 5 controla a cor da bolinha do switch
+      
+      />
 
                                                 {/*Obs this.btn NAO USAR this.state.btn pq não é uma stae é uma função */} 
         <TouchableOpacity style={styles.btnForm} onPress={this.btn}>
@@ -132,10 +153,17 @@ class App extends Component {
       <Text>{this.state.nome}</Text>
       <Text>{this.state.idade}</Text>
       <Text>{this.state.sexoOpcoes[this.state.sexo].genero}</Text>
+      <Text>{this.state.valor}</Text>
+      <Text>
+        {/* 6 arow function com base na state status que quando estiver false (desligado o switch) aparece string 'esta desativado',
+                se estiver true (ligado o switch) aparece a string 'esta ativado' */}
+          {(this.state.status) ? 'Conta Estudante' : 'Conta Pessoa Física'}
+      </Text>
 
 
-             
+              
     </View>
+    </ScrollView> 
   );
   }
 }
@@ -143,31 +171,31 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 45,
+    marginTop: 30,
     alignItems: 'center'
   },
   textBank: {
-    fontSize: 25,
+    fontSize: 20,
     color: '#008B8B',
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 15,
   },
   containerForm: {
     borderWidth: 4,
     borderColor: '#00CED1',
-    padding: 20,
-    marginTop: 20,
-    marginBottom: 20,
+    padding: 15,
+    marginTop: 15,
+    marginBottom: 15,
     borderRadius: 15,
   },
   input: {
     paddingLeft: 20,
-    height: 40,
+    height: 30,
     width: 250,
     borderWidth: 2,
     borderColor: '#48D1CC',
     borderRadius: 5,
-    marginBottom: 20
+    marginBottom: 15
   },
   textForm:{
     padding: 5,
@@ -183,6 +211,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     marginHorizontal: 45,
+    marginTop: 5,
   },
   btnText: {
     color: '#fff',
@@ -190,8 +219,8 @@ const styles = StyleSheet.create({
 
   },
   imgBank: {
-    width: 100,
-    height: 100
+    width: 50,
+    height: 50
   },
   stylePicker: {
     color: '#008B8B',
@@ -206,10 +235,15 @@ const styles = StyleSheet.create({
     color:'#008B8B',
   },
   styleSlider: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 5,
     paddingHorizontal: 20,
-  }
+  },
+  switch: {
+    width: 150,
+    height: 40,
+
+  },
 
  
   
