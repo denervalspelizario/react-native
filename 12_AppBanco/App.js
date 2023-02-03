@@ -28,6 +28,7 @@ class App extends Component {
       input2: '', // input2 inica com valor vazio
       valor: 1204,
       status: false,
+      tipoConta: '',
       sexo: 0,
       sexoOpcoes : [
         {key: 1, genero: 'Masculino'},
@@ -45,9 +46,16 @@ class App extends Component {
     } else if( this.state.sexo == 0) {
       alert('selecione o genero')
     } else {
-
+      alert(
+        'Dados da Conta\n' + 'nome: ' + this.state.input + '\nIdade: ' + this.state.input2 + 
+        '\nGenero: ' + this.state.sexoOpcoes[this.state.sexo].genero + 
+        '\nFaixa Salarial: ' + this.state.valor.toFixed(0) +
+        '\nTipo de Conta: ' + this.state.tipoConta
+      )
       this.setState({nome : this.state.input}),
       this.setState({idade : this.state.input2})
+
+      
     }
   };
 
@@ -58,7 +66,13 @@ class App extends Component {
       let genero = this.state.sexoOpcoes.map((value, key) => {
         return <Picker.Item  style={styles.textPicker} key={key}  value={key}   label={value.genero}/> // key e value valores de referencia e label oque vai aparecer para o user
               
-      })  
+      })
+      
+      if(this.state.status == true){
+        this.state.tipoConta = 'Conta Estudante'
+      } else {
+        this.state.tipoConta = 'Conta Comum'
+      }
 
   return (
     <ScrollView showsHorizontalScrollIndicator={true}>
@@ -109,9 +123,9 @@ class App extends Component {
         <Slider 
         style={styles.styleSlider}
         // 2 minimunValue é o valor minimo que neste caso é 0
-        minimunValue={1240.00}
+        minimunValue={1400}
         // 2 maximumValue é o valor máximo que neste caso é 
-        maximumValue={10000.00}
+        maximumValue={10000}
         
         // 2 onValueChange é usada para achar o valor quando se arrasta o item do slider  no caso a bolinha
         // OBS o slider é um traço que cada parte representa por um valor o onValueChange faz o papel de 
@@ -131,7 +145,7 @@ class App extends Component {
         thumbTintColor='#00ced1'	
       />
       <Text style={styles.textForm}>
-        Rendimento mensal R$ {this.state.valor.toFixed(2)} 
+        Rendimento mensal R$ {this.state.valor.toFixed(0)} 
       </Text>
 
       {/* uso do Switch */}
@@ -149,19 +163,7 @@ class App extends Component {
           <Text style={styles.btnText}>Abrir Conta</Text>
         </TouchableOpacity>
       </View>
-
-      <Text>{this.state.nome}</Text>
-      <Text>{this.state.idade}</Text>
-      <Text>{this.state.sexoOpcoes[this.state.sexo].genero}</Text>
-      <Text>{this.state.valor}</Text>
-      <Text>
-        {/* 6 arow function com base na state status que quando estiver false (desligado o switch) aparece string 'esta desativado',
-                se estiver true (ligado o switch) aparece a string 'esta ativado' */}
-          {(this.state.status) ? 'Conta Estudante' : 'Conta Pessoa Física'}
-      </Text>
-
-
-              
+        
     </View>
     </ScrollView> 
   );
