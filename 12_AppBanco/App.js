@@ -31,9 +31,10 @@ class App extends Component {
       tipoConta: '',
       sexo: 0,
       sexoOpcoes : [
-        {key: 1, genero: 'Masculino'},
-        {key: 2, genero: 'Feminino'},
-        {key: 3, genero: 'Prefiro não dizer'},
+        {key: 1, genero: 'Selecione genero'},
+        {key: 2, genero: 'Masculino'},
+        {key: 3, genero: 'Feminino'},
+        {key: 4, genero: 'Prefiro não dizer'},
 
       ]
     };
@@ -189,6 +190,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 15,
     borderRadius: 15,
+    width: '80%',
+    height: '80%',
   },
   input: {
     paddingLeft: 20,
@@ -197,7 +200,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#48D1CC',
     borderRadius: 5,
-    marginBottom: 15
+    marginBottom: 15,
+    marginHorizontal: '8%'
   },
   textForm:{
     padding: 5,
