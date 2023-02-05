@@ -26,11 +26,11 @@ class App extends Component {
       idade: '', // state nome inicia valor 0 e ao clicar(onPress) altera atravez do seState(linha 22) para valor do input
       input: '',  // input inica com valor vazio
       input2: '', // input2 inica com valor vazio
-      valor: 1204,
-      status: false,
-      tipoConta: '',
-      sexo: 0,
-      sexoOpcoes : [
+      valor: 1204, // state do slider com valor inicial 
+      status: false, // state do switch
+      tipoConta: '', // state vinculada a state status (switch)
+      sexo: 0, // state do picker
+      sexoOpcoes : [  // array do picker
         {key: 1, genero: 'Selecione genero'},
         {key: 2, genero: 'Masculino'},
         {key: 3, genero: 'Feminino'},
@@ -41,20 +41,21 @@ class App extends Component {
     this.btn = this.btn.bind(this);  // 2 atravez deste bind ele linka a funcao entrar é acionada ao clicar
   };
 
+  // fucnao btn que é acionada ao clicar botão(linha 166)
   btn(){
     if(this.state.input === '' || this.state.input2 === ''){
       alert('Algum campo está vazio')
     } else if( this.state.sexo == 0) {
       alert('selecione o genero')
     } else {
-      alert(
+      alert(  // string acionado quando texto com dados digitados
         'Dados da Conta\n' + 'nome: ' + this.state.input + '\nIdade: ' + this.state.input2 + 
-        '\nGenero: ' + this.state.sexoOpcoes[this.state.sexo].genero + 
+        '\nGenero: ' + this.state.sexoOpcoes[this.state.sexo].genero +  // Obs o state da array sexoOpcoes tem que ser como foi digitado 
         '\nFaixa Salarial: ' + this.state.valor.toFixed(0) +
         '\nTipo de Conta: ' + this.state.tipoConta
       )
-      this.setState({nome : this.state.input}),
-      this.setState({idade : this.state.input2})
+      this.setState({nome : this.state.input}),  // no momento que o btn é chamada(onPress) altera o state nome pelo valor de input 
+      this.setState({idade : this.state.input2}) // no momento que o btn é chamada(onPress) altera o state idade pelo valor de input2 
 
       
     }
@@ -69,6 +70,8 @@ class App extends Component {
               
       })
       
+      // 5 funcao que pega o valor status e de acordo com o states status
+      // altera o valor da state tipoConta para se true(status status) recebe Conta estudante, se false(state status) recebe Conta Comum 
       if(this.state.status == true){
         this.state.tipoConta = 'Conta Estudante'
       } else {
@@ -124,7 +127,7 @@ class App extends Component {
         <Slider 
         style={styles.styleSlider}
         // 2 minimunValue é o valor minimo que neste caso é 0
-        minimunValue={1400}
+        minimunValue={0}
         // 2 maximumValue é o valor máximo que neste caso é 
         maximumValue={10000}
         
@@ -154,7 +157,7 @@ class App extends Component {
       <Switch
         style={styles.switch}
         value={this.state.status}
-        onValueChange={(valorSwicth) => this.setState({status: valorSwicth})}
+        onValueChange={(valorSwitch) => this.setState({status: valorSwitch})}  // 5 funcao que controla e joga valor no state Switch (false ou true)
         thumbColor='#00FFFF' // 5 controla a cor da bolinha do switch
       
       />
