@@ -22,11 +22,12 @@ class Entrar extends Component {
 
 const styles = StyleSheet.create({
     containerModal: {
-      width: '100%',
+      width: 350,
       height: 300,
       alignItems: 'center',
       backgroundColor: '#292929',
-      marginTop: '50%',
+      borderRadius: 20
+      
     },
     textModal: {
       marginTop: '20%',  

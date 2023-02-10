@@ -38,8 +38,10 @@ class App extends Component {
                               // https://reactnative.dev/docs/modal                                
         visible={this.state.modalVisible} // mostra quando sera MOSTRADA o modal, neste caso quando o state modalVisible estiver true 
       >
-        {/* Recebe o componente entrar   que recebe o props(parametro) sair que é uma funcao (linha 22)*/}
-        <Entrar sair={this.sair}/>  
+        <View style={styles.containerModal}>
+          {/* Recebe o componente entrar   que recebe o props(parametro) sair que é uma funcao (linha 22)*/}
+          <Entrar sair={this.sair}/>  
+        </View>
       </Modal>
     </View>
   );
@@ -53,10 +55,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#DDD',
   },
-  textModal: {
-    color: '#fff',
-    fontSize: 28,
-  },
+  
+  containerModal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    
+  }
   
   
 });
