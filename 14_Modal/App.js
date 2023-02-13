@@ -21,7 +21,7 @@ class App extends Component {
 
   sair(){ // funcao sair chamada ao clicar no botao(linha 13 Entrar.js)
     if(this.state.modalVisible == true){  
-      this.setState({modalVisible: false}) //  altera o state modalVisible para false e assim mostra o modal(olhar linha 29)
+      this.setState({modalVisible: false}) //  altera o state modalVisible para false e assim fecha o modal(olhar linha 29)
     }
   }
 
