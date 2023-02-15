@@ -27,7 +27,7 @@ class App extends Component {
                                                          //    1 que sera todo o conteudo de //https://sujeitoprogramador.com/r-api/?api=filmes
                                                          // 1 metodo get que retorna um elemento específico
 
-    this.setState({ //** 1 altera o state array filmes de vazio para dados do response(linha 23) .data 
+    this.setState({ //** 1 altera o state array filmes de vazio para dados do response(linha 20) .data 
       filmes: response.data,  // ** 1 as informações vem do axios vem sempre no api.data(no caso response.data) 
       
       loading: false  // 3 - desliga o loading assim que é carregado os dados 
