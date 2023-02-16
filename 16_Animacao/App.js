@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';  // precisa importar a Animated
+import { StyleSheet, Text, View, Animated,LogBox } from 'react-native';  // precisa importar a Animated,  LogBox para desativar erro(leia linha 69)
 
 class App extends Component {
 
@@ -51,8 +51,7 @@ class App extends Component {
       ),  
 
     ]).start()  // funcao para estartar a  animação lembrando que a animacao neste caso esta fazendo em cascata faz a do state alrguraAnimada e depois alturaAnimada
-
-
+    
 
    /* Animated.timing( 
       this.state.larguraAnimada,  // parametros de animação da state larguraAnimada
@@ -65,6 +64,11 @@ class App extends Component {
     ).start() // funcao para estartar a animação */
 
   }
+
+
+componentDidMount() {  
+  LogBox.ignoreLogs(['Animated: `useNativeDriver`']); // Importante funcao para desativar erro de useNativeDriver
+}  
 
   render(){
   return (
