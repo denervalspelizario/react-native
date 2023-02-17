@@ -16,7 +16,8 @@ class App extends Component {
   } 
 
   carregarGrafico(){  // funcao que será chamada ao clicar no botão(leila linha 31)
-    Animated.sequence([
+
+    Animated.sequence([  // sequence que diz que animção vai ser feita em cascata(sequenciada)
       Animated.timing(
         this.state.opAnimada,
         {
