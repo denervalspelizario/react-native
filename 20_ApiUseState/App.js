@@ -16,13 +16,13 @@ export default function App(){
   // funcao alteraNome é acionado ao clicar(linha 46)
   function alteraNome(){  
     if(input != ''){       // se input for DIFERENTE de vazio ou seja (linha 33) texto foi digitado em input       
-      setNome(input)       // nome que esta vazio (linha 11) recebe atravez de setNome o valor de input(que foi digitado linha 33)   
-    } else  {              // lembre-se  o setNome é como se fosse o this.setState                
-      setNome('')          // é atravez dele que se altera a sate inicial que no caso é a state nome   
+      setNome(input)       // nome que esta vazio (linha 11) recebe atravez de setNome o valor de input(que foi digitado linha 33)  
+      setInput('')         // lembre-se  o setNome é como se fosse o this.setState   
+    } else  {              // é atravez dele que se altera a sate inicial que no caso é a state nome               
+      setNome('')          // e o input atravez do seInput volta a ser vazio  
     }                      // SENÂO  ou seja input está vazio o nome recebe valor vazio atravéz do setNome  vazio                    
   }
-                                      
-                                    
+                                               
   return(
     <View style={styles.container}>
       <Text>Digite seu nome</Text>
