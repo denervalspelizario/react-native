@@ -23,10 +23,10 @@ export default function App(){
   useEffect(()=> {
     
     async function pegarStorage(){
-      const nomeStorage = await AsyncStorage.getItem('nomes');
-
-      if(nomeStorage !== null){
-        setNome(nomeStorage)
+      const nomeStorage = await AsyncStorage.getItem('nomes'); // funcao é chamda quando se incia e pega oque tiver em nomes(leia linha 44) e adiciona em setNome ou seja
+                                                               // nome se inicia vazio ou '' mas essa funcao joga o 'nomes' no setNome(altera state) tranformando
+      if(nomeStorage !== null){                                // nome vazio em conteudo que estiver em 'nomes'  no caso o ultimo nome digitado funciona como um save  
+        setNome(nomeStorage)                                   // leia linha 41 e entanda o a funcao salvarStorage 
       }
 
     }
@@ -41,10 +41,10 @@ export default function App(){
   useEffect(()=>{   // toda vez que nome(linha 11) for alterado ele executa a funcao saveStorage, que guarda o nome
 
     async function salvarStorage(){
-      await AsyncStorage.setItem('nomes', nome);
-    }
-
-    salvarStorage();
+      await AsyncStorage.setItem('nomes', nome);  // funcao pega oque tiver em nome(linha 17) e salva lembre-se ela só é chamada quando nome for alterado
+    }                                             // no caso quando for digitado algo no input   
+                                                  // ou seja vai SALVAR o conteudo de nome em 'nomes' depois que nome queceber dado da input
+    salvarStorage();                              // que posteriormente será usado leia linha 23
 
   }, [nome])  // quando meu NOME for alterado
 
